@@ -47,12 +47,31 @@ def Dividir(ecuacion, factor):
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return eqLatex  #Se devuelve la ecuacion en latex
 
+def Raiz(ecuacion, factor):
+    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
+    fac = parse_latex(factor) # convierte de latex a formato Sympy
+    eqLeft = powdenest(root(parse_latex(parts[0]), fac ),
+                                      force=True) # Se suma al lado izquierdo el factor
+    eqRight = powdenest(root(parse_latex(parts[1]), fac ),
+                                      force=True)# Se suma al lado derecho el factor
+    eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
+    return eqLatex  #Se devuelve la ecuacion en latex
+
 def Simplificar(ecuacion):
     parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     eqLeft = powdenest(simplify(parse_latex(parts[0]), inverse=True), force=True)  # Se suma al lado izquierdo el factor
     eqRight = powdenest(simplify(parse_latex(parts[1]), inverse=True), force=True)  # Se suma al lado derecho el factor
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return eqLatex  #Se devuelve la ecuacion en latex
+
+def Expandir(ecuacion):
+    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
+    eqLeft = powdenest(expand(parse_latex(parts[0]), inverse=True), force=True)  # Se suma al lado izquierdo el factor
+    eqRight = powdenest(expand(parse_latex(parts[1]), inverse=True), force=True)  # Se suma al lado derecho el factor
+    eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
+    return eqLatex  #Se devuelve la ecuacion en latex
+
+
 
 
 
@@ -66,3 +85,8 @@ print(Dividir(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
 print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
 print(Simplificar(r"x^2+x+x+1=4"))
 print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
+
+print(Expandir(r"(x+1)^2=4"))
+
+print(Raiz(r"4= x^3", r"2"))
+print(Raiz(r"4= x^2", r"2"))
