@@ -67,14 +67,14 @@ def Raiz(ecuacion, factor):
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return eqLatex  #Se devuelve la ecuacion en latex
 
-def Simplificar(ecuacion):
+def Simplificar(ecuacion, factor):
     parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     eqLeft = powdenest(simplify(parse_latex(parts[0]), inverse=True), force=True)  # Se simplifica al lado izquierdo el factor
     eqRight = powdenest(simplify(parse_latex(parts[1]), inverse=True), force=True)  # Se simplifica al lado derecho el factor
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return eqLatex  #Se devuelve la ecuacion en latex
 
-def Expandir(ecuacion):
+def Expandir(ecuacion, factor):
     parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     eqLeft = powdenest(expand(parse_latex(parts[0]), inverse=True), force=True)  # Se simplifica al lado izquierdo el factor
     eqRight = powdenest(expand(parse_latex(parts[1]), inverse=True), force=True)  # Se simplifica al lado derecho el factor
