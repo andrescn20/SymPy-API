@@ -67,14 +67,14 @@ def Raiz(ecuacion, factor):
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return eqLatex  #Se devuelve la ecuacion en latex
 
-def Simplificar(ecuacion):
+def Simplificar(ecuacion, factor):
     parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     eqLeft = powdenest(simplify(parse_latex(parts[0]), inverse=True), force=True)  # Se simplifica al lado izquierdo el factor
     eqRight = powdenest(simplify(parse_latex(parts[1]), inverse=True), force=True)  # Se simplifica al lado derecho el factor
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return eqLatex  #Se devuelve la ecuacion en latex
 
-def Expandir(ecuacion):
+def Expandir(ecuacion, factor):
     parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     eqLeft = powdenest(expand(parse_latex(parts[0]), inverse=True), force=True)  # Se simplifica al lado izquierdo el factor
     eqRight = powdenest(expand(parse_latex(parts[1]), inverse=True), force=True)  # Se simplifica al lado derecho el factor
@@ -87,16 +87,16 @@ def Expandir(ecuacion):
 
 
 ## Pruebas
-print(Sumar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"1"))
-print(Restar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x"))
-print(Multiplicar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
-print(Dividir(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
+#print(Sumar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"1"))
+#print(Restar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x"))
+#print(Multiplicar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
+#print(Dividir(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
 
-print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
-print(Simplificar(r"x^2+x+x+1=4"))
-print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
+#print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
+#print(Simplificar(r"x^2+x+x+1=4"))
+#print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
 
-print(Expandir(r"(x+1)^2=4"))
+#print(Expandir(r"(x+1)^2=4"))
 
-print(Raiz(r"4= x^3", r"2"))
-print(Raiz(r"4= x^2", r"2"))
+#print(Raiz(r"4= x^3", r"2"))
+#print(Raiz(r"4= x^2", r"2"))
