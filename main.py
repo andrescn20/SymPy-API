@@ -86,17 +86,17 @@ def Expandir(ecuacion):
 
 
 
-## Pruebas
-print(Sumar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"1"))
-print(Restar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x"))
-print(Multiplicar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
-print(Dividir(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
+# ## Pruebas
+# print(Sumar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"1"))
+# print(Restar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x"))
+# print(Multiplicar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
+# print(Dividir(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
 
-print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
-print(Simplificar(r"x^2+x+x+1=4"))
-print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
+# print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
+# print(Simplificar(r"x^2+x+x+1=4"))
+# print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
 
-print(Expandir(r"(x+1)^2=4"))
+# print(Expandir(r"(x+1)^2=4"))
 
-print(Raiz(r"4= x^3", r"2"))
-print(Raiz(r"4= x^2", r"2"))
+# print(Raiz(r"4= x^3", r"2"))
+# print(Raiz(r"4= x^2", r"2"))
