@@ -2,4 +2,5 @@ venv
 *.pyc
 *.pyc
 __pycache__/functions.cpython-310.pyc
-__pycache__/index.cpython-310.pyc
+__pycache__
+
