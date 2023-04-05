@@ -1,8 +1,6 @@
 #  Hay que instalar pip install antlr4-python3-runtime==4.10
 # pip install sympy
 
-
-# Aquí están los paquetes que deben ser importados
 import antlr4
 from sympy import *
 from sympy.parsing.latex import parse_latex
@@ -82,21 +80,3 @@ def Expandir(ecuacion, factor):
     return eqLatex  #Se devuelve la ecuacion en latex
 
 
-
-
-
-
-# ## Pruebas
-# print(Sumar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"1"))
-# print(Restar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x"))
-# print(Multiplicar(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
-# print(Dividir(r"\frac {1 + \sqrt {\a}} {\b} = x^2", r"x^2"))
-
-# print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
-# print(Simplificar(r"x^2+x+x+1=4"))
-# print(Simplificar(r"\frac {1 + \sqrt {\a}} {\b} = x^2"))
-
-# print(Expandir(r"(x+1)^2=4"))
-
-# print(Raiz(r"4= x^3", r"2"))
-# print(Raiz(r"4= x^2", r"2"))
