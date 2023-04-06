@@ -1,11 +1,13 @@
 from flask import Flask , request , jsonify
+from flask_cors import CORS
 from functions import *
 
 app = Flask(__name__)
+CORS(app)
     
 @app.route('/')
 def home():
-        return "Welcome."
+        return {'Test' : 'This is a test'}
 
 
 @app.route('/test', methods=['GET'])
