@@ -21,8 +21,7 @@ def call_suma():
     if request.method == 'POST': 
         data = request.get_json() 
         result = Sumar(data['equation'], data['factor']) 
-        response = {'result': result} 
-        return jsonify(response) 
+        return jsonify(result) 
     
 
 @app.route('/Restar', methods=['POST'])
