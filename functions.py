@@ -42,8 +42,8 @@ def Multiplicar(equation, factor):
 
 def Dividir(equation, factor):
     fac = parse_expr(factor) # convierte de latex a formato Sympy
-    eqLeft = parse_expr(equation).lhs * fac # Se suma al lado izquierdo el factor
-    eqRight = parse_expr(equation).rhs * fac # Se suma al lado derecho el factor
+    eqLeft = parse_expr(equation).lhs / fac # Se suma al lado izquierdo el factor
+    eqRight = parse_expr(equation).rhs / fac # Se suma al lado derecho el factor
     eq = str(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la equation en ambos formatos
