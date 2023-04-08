@@ -16,75 +16,67 @@ from sympy.parsing.latex import parse_latex
 # Esto,para que python pueda leer correctamente los backlashes
 
 def Sumar(ecuacion, factor):
-    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
-    eqLeft = parse_expr(parts[0]) + fac # Se suma al lado izquierdo el factor
-    eqRight = parse_expr(parts[1]) + fac # Se suma al lado derecho el factor
+    eqLeft = parse_expr(ecuacion).lhs + fac # Se suma al lado izquierdo el factor
+    eqRight = parse_expr(ecuacion).rhs + fac # Se suma al lado derecho el factor
     eq = str(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatos
 
 def Restar(ecuacion, factor):
-    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
-    eqLeft = parse_expr(parts[0]) - fac # Se suma al lado izquierdo el factor
-    eqRight = parse_expr(parts[1]) - fac # Se suma al lado derecho el factor
+    eqLeft = parse_expr(ecuacion).lhs - fac # Se suma al lado izquierdo el factor
+    eqRight = parse_expr(ecuacion).rhs - fac # Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatosx
 
 def Multiplicar(ecuacion, factor):
-    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
-    eqLeft = parse_expr(parts[0]) * fac # Se suma al lado izquierdo el factor
-    eqRight = parse_expr(parts[1]) * fac # Se suma al lado derecho el factor
+    eqLeft = parse_expr(ecuacion).lhs * fac # Se suma al lado izquierdo el factor
+    eqRight = parse_expr(ecuacion).rhs * fac # Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatos
 
 def Dividir(ecuacion, factor):
-    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
-    eqLeft = parse_expr(parts[0]) / fac # Se suma al lado izquierdo el factor
-    eqRight = pparse_expr(arts[1]) / fac # Se suma al lado derecho el factor
+    eqLeft = parse_expr(ecuacion).lhs * fac # Se suma al lado izquierdo el factor
+    eqRight = parse_expr(ecuacion).rhs * fac # Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatos
 
 def Potencia(ecuacion, factor):
-    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
-    eqLeft = powdenest(Pow(parse_expr(parts[0]), fac ),
+    eqLeft = powdenest(Pow(parse_expr(ecuacion).lhs, fac ),
                                       force=True) # Se suma al lado izquierdo el factor
-    eqRight = powdenest(Pow(parse_expr(parts[1]), fac ),
+    eqRight = powdenest(Pow(parse_expr(ecuacion).rhs, fac ),
                                       force=True)# Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatos
 
 def Raiz(ecuacion, factor):
-    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
-    eqLeft = powdenest(root(parse_expr(parts[0]), fac ),
+    eqLeft = powdenest(root(parse_expr(ecuacion).lhs, fac ),
                                       force=True) # Se suma al lado izquierdo el factor
-    eqRight = powdenest(root(parse_expr(parts[1]), fac ),
+    eqRight = powdenest(root(parse_expr(ecuacion).rhs, fac ),
                                       force=True)# Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatos
 
 def Simplificar(ecuacion, factor):
-    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
-    eqLeft = powdenest(simplify(parse_expr(parts[0]), inverse=True), force=True)  # Se suma al lado izquierdo el factor
-    eqRight = powdenest(simplify(parse_expr(parts[1]), inverse=True), force=True)  # Se suma al lado derecho el factor
+    eqLeft = powdenest(simplify(parse_expr(ecuacion).lhs, inverse=True), force=True)  # Se suma al lado izquierdo el factor
+    eqRight = powdenest(simplify(parse_expr(ecuacion).rhs, inverse=True), force=True)  # Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatos
 
 def Expandir(ecuacion, factor):
-    parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
-    eqLeft = powdenest(expand(parse_expr(parts[0]), inverse=True), force=True)  # Se suma al lado izquierdo el factor
-    eqRight = powdenest(expand(parse_expr(parts[1]), inverse=True), force=True)  # Se suma al lado derecho el factor
+    eqLeft = powdenest(expand(parse_expr(ecuacion).lhs, inverse=True), force=True)  # Se suma al lado izquierdo el factor
+    eqRight = powdenest(expand(parse_expr(ecuacion).rhs, inverse=True), force=True)  # Se suma al lado derecho el factor
     eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatos
 
