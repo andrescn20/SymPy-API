@@ -19,15 +19,16 @@ def Sumar(ecuacion, factor):
     parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
     eqLeft = parse_expr(parts[0]) + fac # Se suma al lado izquierdo el factor
-    eqRight = pparse_expr(arts[1]) + fac # Se suma al lado derecho el factor
-    eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
-    return str(eq)  #Se devuelve la ecuacion en latex
+    eqRight = parse_expr(parts[1]) + fac # Se suma al lado derecho el factor
+    eq = str(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
+    eqLatex = latex(Eq(eqLeft, eqRight)) # Se combinan los dos lados en una nueva ecuación, en formato latex
+    return {'sympy' : eq , 'latex' : eqLatex }  #Se devuelve la ecuacion en ambos formatos
 
 def Restar(ecuacion, factor):
     parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
     eqLeft = parse_expr(parts[0]) - fac # Se suma al lado izquierdo el factor
-    eqRight = pparse_expr(arts[1]) - fac # Se suma al lado derecho el factor
+    eqRight = parse_expr(parts[1]) - fac # Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return str(eq)  #Se devuelve la ecuacion en latex
 
@@ -35,7 +36,7 @@ def Multiplicar(ecuacion, factor):
     parts = ecuacion.split("=")  # Divide la ecuacion en dos partes, dividiendo en el igual
     fac = parse_expr(factor) # convierte de latex a formato Sympy
     eqLeft = parse_expr(parts[0]) * fac # Se suma al lado izquierdo el factor
-    eqRight = pparse_expr(arts[1]) * fac # Se suma al lado derecho el factor
+    eqRight = parse_expr(parts[1]) * fac # Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return str(eq)  #Se devuelve la ecuacion en latex
 
@@ -52,7 +53,7 @@ def Potencia(ecuacion, factor):
     fac = parse_expr(factor) # convierte de latex a formato Sympy
     eqLeft = powdenest(Pow(parse_expr(parts[0]), fac ),
                                       force=True) # Se suma al lado izquierdo el factor
-    eqRight = powdenest(Pow(parse_expr(parts[1], fac ),
+    eqRight = powdenest(Pow(parse_expr(parts[1]), fac ),
                                       force=True)# Se suma al lado derecho el factor
     eq = Eq(eqLeft, eqRight) # Se combinan los dos lados en una nueva ecuación, en formato latex
     return str(eq)  #Se devuelve la ecuacion en latex
