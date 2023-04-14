@@ -7,7 +7,7 @@ CORS(app)
     
 @app.route('/')
 def home():
-        return {'Test' : 'This is a test'}
+        return jsonify({'response' : 'Connection Successful'})
 
 
 @app.route('/test', methods=['GET'])
