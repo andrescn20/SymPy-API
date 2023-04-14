@@ -5,9 +5,10 @@ from functions import *
 app = Flask(__name__)
 CORS(app)
     
-@app.route('/')
+@app.route('/' , methods=['GET'])
 def home():
-        return jsonify({'response' : 'Connection Successful'})
+        if request.method == 'GET':
+            return jsonify({'response' : 'Connection Successful'})
 
 
 @app.route('/test', methods=['GET'])
